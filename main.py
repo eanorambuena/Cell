@@ -1,14 +1,13 @@
 from cell import *
+from init import n,name
 
-adress="main"
-n=15
+adress= "init"
 
-'''
-c=Mother("c",adress)
-c.execute()
-'''
-execute("mother")
+#clearall(n,name)
 
-
+main=Cell(name,adress,0)
+main.count
+main.reproduction()
+execute(main.newname)
 
 
