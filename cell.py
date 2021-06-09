@@ -1,22 +1,21 @@
 import os
-import init
 
 class Cell():
-  def __init__(self,name,adress,count):
+  def __init__(self,name,adress,count,n):
     self.name=name
     self.count=count
+    self.n=n
     self.adress=adress
     self.newname=self.name+"1"
-    t0="from "+self.adress+" import n,name\n"
     t1="from cell import *\n"
-    t2=self.newname+"=Cell(\""+self.newname+"\",\""+self.adress+"\","+str(self.count+1)+")\n"
-    t3="if "+self.newname+".count>=n:\n"
-    t4="\tclearall(n,name)\n"
+    t2=self.newname+"=Cell(\""+self.newname+"\",\""+adress+"\","+str(self.count+1)+","+str(n)+")\n"
+    t3="if "+self.newname+".count>="+str(n)+":\n"
+    t4="\tclearall("+str(n)+","+self.newname+".adress)\n"
     t5="else:\n"
     t6="\t"+self.newname+".reproduction()\n"
     t7="\texecute("+self.newname+".newname)\n"
-    self.text=t0+t1+t2+t3+t4+t5+t6+t7
-    print(init.name+" #"+str(self.count)+" was added succesfully")
+    self.text=t1+t2+t3+t4+t5+t6+t7
+    print(adress+" #"+str(self.count)+" was added succesfully")
   def reproduction(self):
     f=open(self.newname+".py",'w')
     f.write(self.text)
@@ -27,7 +26,7 @@ def execute(name):
     t="/usr/bin/python "+name+".py"
     os.system(t)
   except:
-    print(E)
+    print("Execute error in: "+"/usr/bin/python "+name+".py")
 
 def clearall(n,name):
   t=""

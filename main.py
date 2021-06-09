@@ -1,11 +1,9 @@
 from cell import *
-from init import n,name
 
-adress= "init"
+adress= "main"
+n=20
 
-#clearall(n,name)
-
-main=Cell(name,adress,0)
+main=Cell(adress,adress,0,n)
 main.count
 main.reproduction()
 execute(main.newname)
